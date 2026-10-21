@@ -59,7 +59,7 @@ public class DataSeeder
                 ExpiryDate = DateTime.Today.AddDays(-30)
             }
     ];
-    List<Order> incomingOrders =
+    private static readonly List<Order> _incomingOrders =
 [
     new()
     {
@@ -258,6 +258,7 @@ public class DataSeeder
     }
 ];
 
+
     public static async Task ResetAsync()
     {
 
@@ -270,12 +271,18 @@ public class DataSeeder
 
 
 
-        await json.WriteAsync(DataPaths.GetFilePath(DataFiles.CustomersFile), _customers);
-        await json.WriteAsync(DataPaths.GetFilePath(DataFiles.ProductsFile), _products);
-        await json.WriteAsync(DataPaths.GetFilePath(DataFiles.CouponsFile), _coupons);
+        Task task1 = json.WriteAsync(DataPaths.GetFilePath(DataFiles.CustomersFile), _customers);
+        Task task2 = json.WriteAsync(DataPaths.GetFilePath(DataFiles.ProductsFile), _products);
+        Task task3 = json.WriteAsync(DataPaths.GetFilePath(DataFiles.CouponsFile), _coupons);
+        Task task4 = json.WriteAsync(DataPaths.GetFilePath(DataFiles.IncomingOrdersFile), _incomingOrders);
+
+        Task task5 = json.WriteAsync(DataPaths.GetFilePath(DataFiles.OrdersFile), new List<Order>());
+        Task task6 = json.WriteAsync(DataPaths.GetFilePath(DataFiles.PaymentsFile), new List<PaymentTransaction>());
+        Task task7 = json.WriteAsync(DataPaths.GetFilePath(DataFiles.EmailsFile), new List<EmailMessage>());
+        Task task8 = json.WriteAsync(DataPaths.GetFilePath(DataFiles.EmailRetryFile), new List<EmailMessage>());
 
 
-
+        await Task.WhenAll(task1, task2, task3, task4, task5, task6, task7, task8);
 
 
     }

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProcessing.Exceptions
+namespace OrderProcessing.Exceptions;
+
+public class DataFileCorruptedException : Exception
 {
-    internal class DataFileCorruptedException
+    public DataFileCorruptedException(string message) : base(message)
     {
+        
     }
 }

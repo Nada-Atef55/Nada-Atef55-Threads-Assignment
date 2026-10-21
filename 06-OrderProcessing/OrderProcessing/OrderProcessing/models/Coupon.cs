@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+namespace OrderProcessing.models;
 
-namespace OrderProcessing.models
+public class Coupon
 {
-    internal class Coupon
-    {
-    }
+    public string Code { get; set; } = string.Empty;
+    public int DiscountPercent { get; set; }
+    public DateTime ExpiryDate { get; set; }
 }
