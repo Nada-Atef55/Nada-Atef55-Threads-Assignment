@@ -1,9 +1,16 @@
-﻿namespace OrderProcessing;
+﻿using OrderProcessing.Phase_Test;
+
+namespace OrderProcessing;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
+        await Phase1Runner.RunAsync();
+        await Phase1Runner.PrintSummary();
+
+
         
+
     }
 }

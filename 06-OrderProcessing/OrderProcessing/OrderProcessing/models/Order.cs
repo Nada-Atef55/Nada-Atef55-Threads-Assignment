@@ -22,7 +22,7 @@ public class Order
 
     public List<OrderItem> Items { get; set; } = [];
 
-    public string? CouponCode { get; set; }
+    public string? CouponCode { get; set; } = null;
 
     public decimal SubTotal { get; set; }
     public decimal Discount { get; set; }

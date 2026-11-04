@@ -16,7 +16,7 @@ public class JsonFileStore
             List<T> result = JsonSerializer.Deserialize<List<T>>(content, JsonConfigurations.Options) ?? new List<T>();
             return result;
         }
-        catch(JsonException ex)
+        catch(JsonException )
         {
             throw new DataFileCorruptedException(path);
         }
@@ -39,7 +39,7 @@ public class JsonFileStore
             List<T> result = JsonSerializer.Deserialize<List<T>>(content, JsonConfigurations.Options) ?? new List<T>();
             return result;
         }
-        catch (JsonException ex)
+        catch (JsonException)
         {
             throw new DataFileCorruptedException(path);
         }
